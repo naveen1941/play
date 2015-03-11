@@ -1,0 +1,74 @@
+<div ng-controller="CreateUserCtrl as cuc">
+    <h1>Registration</h1>
+    <h1ng-show="cuc.sessionUser">{{cuc.sessionUser}}</h1>
+    <form id="CreateUserForm" name="CreateUserForm" class="form-horizontal" role="form"
+          ng-submit="cuc.createUser()">
+        <legend class="sm-col-12">Create User</legend>
+
+        <div class="form-group">
+            <label id="lbl_userName" for="userName" class="col-sm-4 control-label">User Name</label>
+
+            <div class="col-sm-4">
+                <input type="text" class="form-control" name="userName" id="userName" placeholder=""
+                       ng-model="cuc.user.userName" ng-minlength="5" ng-maxlength="20" " required/>
+            </div>
+            <div class="col-sm-4">
+                <span ng-show="CreateUserForm.userName.$error.required && CreateUserForm.userName.$dirty">required</span>
+                <span ng-show="!CreateUserForm.userName.$error.required && (CreateUserForm.userName.$error.minlength || CreateUserForm.userName.$error.maxlength) && CreateUserForm.userName.$dirty">Username ust be between 5 and 20 characters.</span>
+            </div>
+        </div>
+
+         <div class="form-group">
+            <label id="lbl_email" for="email" class="col-sm-4 control-label">Email</label>
+
+            <div class="col-sm-4">
+                <input type="email" class="form-control" name="email" id="email" placeholder=""
+                       ng-model="cuc.user.email" required>
+               
+            </div>
+             <div class="col-sm-4">
+                 <span ng-show="CreateUserForm.email.$error.required && CreateUserForm.email.$dirty">required</span>
+                 <span ng-show="!CreateUserForm.email.$error.required && CreateUserForm.email.$error.email && CreateUserForm.email.$dirty">invalid email</span>
+             </div>
+        </div>
+
+        <div class="form-group">
+            <label id="lbl_password1" for="password1" class="col-sm-4 control-label" >Password</label>
+
+            <div class="col-sm-4">
+                <input type="password" class="form-control" name="password1" id="password1" placeholder=""
+                       ng-model="cuc.user.password" ng-minlength="8" ng-maxlength="20" required>
+            </div>
+            <div class="col-sm-4">
+                <span ng-show="CreateUserForm.password1.$error.required && CreateUserForm.password1.$dirty">required</span>
+                <span ng-show="!CreateUserForm.password1.$error.required && (CreateUserForm.password1.$error.minlength || CreateUserForm.password1.$error.maxlength) && CreateUserForm.password1.$dirty">Passwords must be between 8 and 20 characters.</span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label id="lbl_password2" for="password2" class="col-sm-4 control-label">Retype Password</label>
+
+            <div class="col-sm-4">
+                <input type="password" class="form-control" name="password2" id="password2" placeholder=""
+                         required>
+                </div>
+            <div class="col-sm-4">
+                <span ng-show="CreateUserForm.password2.$error.required && CreateUserForm.password2.$dirty">Please confirm your password.</span>
+                <span ng-show="cuc.errors.passwordDonotMatch">{{errors.passwordDonotMatch}}</span>
+            </div>
+        </div>
+        
+    
+
+
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8 text-right">
+                <a ng-href="/#/" id="btn_cancel" class="btn btn-warning">Cancel</a>
+                <button type="submit" class="btn btn-success" id="btn_create" ng-disabled="!CreateUserForm.$valid">Register</button>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+

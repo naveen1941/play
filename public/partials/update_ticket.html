@@ -1,0 +1,146 @@
+<div ng-controller="UpdateTicketCtrl as utc">
+    <h1>Update Ticket</h1>
+    <a ng-href="/#/logout" class="btn btn-warning pull-right" id="btn_ticket_create">Logout</a>
+    <legend class="pull-right">Hello <strong>{{utc.userName}}</strong></legend>
+    <div class="col-sm-offset-1 col-sm-10 ">
+        <div class="panel panel-info">
+            <div class="panel-heading"><h3>{{utc.ticket.title}}</h3></div>
+            <div class="panel-body">
+                <div class="alert alert-success" role="alert">
+                    <div>
+                        <strong>Created By: </strong> <a href="/#/users/{{utc.ticket.createdBy}}"> {{utc.ticket.userName}} </a> on {{utc.ticket.createdDate | date}}
+                    </div>
+                     <div>
+                        <strong>Last Updated Time: </strong> {{utc.ticket.lastUpdatedDate | date}}
+                    </div>
+                </div>
+                <form id="UpdateTicketForm" name="UpdateTicketForm" class="form-horizontal" role="form"
+                    ng-submit="utc.updateTicket()">
+                        <div class="form-group">
+                            <label id="lbl_customerName" for="customerName" class="col-sm-4 control-label">Customer Name</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="customerName" id="customerName" placeholder=""
+                                       ng-model="utc.ticket.customerName" ng-minlength="5" ng-maxlength="20"  ng-readonly="utc.isClosed" required>
+                            </div>
+                            <div class="col-sm-4">
+                                <span ng-show="UpdateTicketForm.customerName.$error.required && UpdateTicketForm.customerName.$dirty">required</span>
+                                <span ng-show="!UpdateTicketForm.customerName.$error.required && (UpdateTicketForm.customerName.$error.minlength || UpdateTicketForm.customerName.$error.maxlength) && UpdateTicketForm.customerName.$dirty">Customet Name must be between 5 and 20 characters.</span>
+                            </div>
+                        </div>
+                
+                        <div class="form-group">
+                            <label id="lbl_email" for="email" class="col-sm-4 control-label">Email</label>
+                
+                            <div class="col-sm-4">
+                                <input type="email" class="form-control" name="email" id="email" placeholder=""
+                                       ng-model="utc.ticket.email" ng-readonly="utc.isClosed" required>
+                            </div>
+                             <div class="col-sm-4">
+                                 <span ng-show="UpdateTicketForm.email.$error.required && UpdateTicketForm.email.$dirty">required</span>
+                                 <span ng-show="!UpdateTicketForm.email.$error.required && UpdateTicketForm.email.$error.email && UpdateTicketForm.email.$dirty">invalid email</span>
+                             </div>
+                        </div>
+                
+                        <div class="form-group">
+                            <label id="lbl_title" for="title" class="col-sm-4 control-label"
+                                   >Title</label>
+                
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="title" id="title"
+                                       ng-model="utc.ticket.title" ng-minlength="5" ng-maxlength="20"  ng-readonly="utc.isClosed" required>
+                            </div>
+                            <div class="col-sm-4">
+                                <span ng-show="UpdateTicketForm.title.$error.required && UpdateTicketForm.title.$dirty">required</span>
+                                <span ng-show="!UpdateTicketForm.title.$error.required && (UpdateTicketForm.title.$error.minlength || UpdateTicketForm.title.$error.maxlength) && UpdateTicketForm.title.$dirty">Title must be between 5 and 20 characters.</span>
+                            </div>
+                        </div>
+                
+                        <div class="form-group">
+                            <label id="lbl_description" for="description" class="col-sm-4 control-label"
+                                    >Description</label>
+                
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="description" id="description"
+                                       ng-model="utc.ticket.description" ng-minlength="5" ng-maxlength="20"  ng-readonly="utc.isClosed" required>
+                            </div>
+                            <div class="col-sm-4">
+                                <span ng-show="UpdateTicketForm.description.$error.required && UpdateTicketForm.description.$dirty">required</span>
+                                <span ng-show="!UpdateTicketForm.description.$error.required && (UpdateTicketForm.description.$error.minlength || UpdateTicketForm.description.$error.maxlength) && UpdateTicketForm.description.$dirty">Description must be between 5 and 20 characters.</span>
+                            </div>
+                        </div>
+                
+                        <div class="form-group">
+                            <label id="lbl_assignedTo" for="assignedTo" class="col-sm-4 control-label"
+                                    >Assigned To</label>
+                
+                            <div class="col-sm-6">
+                                <div class="col-sm-6">
+                                    <select name="select_assignedTo" id name="select_assignedTo" ng-model="utc.ticket.assignedTo" class="form-control" ng-readonly="utc.isClosed" required>
+                                        <option ng-repeat="user in utc.users" value="{{user.userId}}">{{user.userName}}, {{user.email}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <span ng-show="UpdateTicketForm.select_assignedTo.$error.required">Assign this ticket</span>           
+                            </div>
+                        </div>
+                
+                        <div class="form-group">
+                            <label id="lbl_status" for="status" class="col-sm-4 control-label"
+                                    >Status</label>
+                            <div class="col-sm-6">
+                                <div class="col-sm-6">
+                                    <select name="select_status" id name="select_status" ng-model="utc.ticket.status" class="form-control" ng-readonly="utc.isClosed" required>
+                                        <option ng-repeat="option in utc.status" value="{{option.id}}">{{option.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                             <div class="col-sm-4">
+                                <span ng-show="UpdateTicketForm.select_status.$error.required">Select Status</span>           
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-8 text-right" >
+                                <a ng-href="/#/" id="btn_cancel" class="btn btn-warning">Cancel</a>
+    
+                                <button type="submit" class="btn btn-success" id="btn_create" ng-hide="utc.isClosed" ng-disabled="!UpdateTicketForm.$valid">Update Ticket</button>
+                            </div>
+                        </div>
+                     
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    
+     <div class="col-sm-offset-1 col-sm-10 ">
+        <legend class="sm-col-12">Comments</legend>
+        <div ng-repeat="comment in utc.comments">
+            <p>
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <strong><a href="/#/users/{{comment.commentedBy}}">{{comment.userName}}</a></strong>
+                {{comment.comment}}
+            </p>
+        </div>
+        <div ng-hide="utc.comments.length">
+                <p class="text-center"><strong>No Comments</strong></p>
+            </td>
+        </div>
+        <form id="CommentForm" name="CommentForm" class="form-horizontal" role="form"
+          ng-submit="utc.createComment()">
+            <div class="form-group">
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="customerName" id="customerName" placeholder="Type to comment.."
+                           ng-model="utc.comment.comment">
+                </div>
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-success" id="btn_create">Comment</button>
+                </div>
+            </div>
+        </form>
+     </div>
+        
+     
+</div>
+

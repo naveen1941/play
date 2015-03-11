@@ -1,0 +1,14 @@
+<div ng-controller="UserDetailCtrl as udc">
+    <h1>User Detail</h1>
+    <a ng-href="/#/logout" class="btn btn-warning pull-right" id="btn_ticket_create">Logout</a>
+    <legend class="pull-right">Hello <strong>{{utc.userName}}</strong></legend>
+    <div class="col-sm-offset-4 col-sm-4">
+        <div class="alert alert-info" role="alert">
+            <div ng-repeat="user in udc.users">
+                Hello, I am <strong>{{user.userName}}</strong>,My email is <strong><a href="#">{{user.email}}</a></strong>.
+            </div>
+        </div>
+    </div>
+    
+</div>
+

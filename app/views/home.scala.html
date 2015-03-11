@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Customer Service Representatives</title>
+            <!-- Latest compiled and minified Bootstrap CSS -->
+        <link rel="stylesheet" href='@routes.Assets.at("lib/bootstrap/css/bootstrap.css")'>
+        <link rel="stylesheet" href='@routes.Assets.at("lib/bootstrap/css/bootstrap-theme.css")'>
+        <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/main.css")'>
+    </head>
+    <body>
+
+            <!-- Fixed navbar -->
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container-fluid"  >
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Customer Service Representatives - Management</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-sm-12" ng-view></div>
+            </div>
+
+        </div>
+
+        <footer>
+            <hr/>
+            <div>
+                <span>&copy; Customer Service Representatives </span>
+            </div>
+        </footer>
+
+    </body>
+
+    <script src='@routes.Assets.at("lib/angularjs/angular.js")' type="text/javascript"></script>
+    <script src='@routes.Assets.at("lib/angularjs/angular-route.js")' type="text/javascript"></script>
+    <script src='@routes.Assets.at("lib/angular-ui-bootstrap/ui-bootstrap-tpls.js")' type="text/javascript"></script>
+
+        <!-- Coffee script compilled resources-->
+    <script src='@routes.Assets.at("javascripts/app.js")' type="text/javascript"></script>
+    <script src='@routes.Assets.at("javascripts/common/Config.js")' type="text/javascript"></script>
+    <script src='@routes.Assets.at("javascripts/directives/AppVersion.js")' type="text/javascript"></script>
+
+    <script src='@routes.Assets.at("javascripts/users/TicketService.js")' type="text/javascript"></script>
+    <script src='@routes.Assets.at("javascripts/users/TicketCtrl.js")' type="text/javascript"></script>
+    <script src='@routes.Assets.at("javascripts/users/CreateTicketCtrl.js")' type="text/javascript"></script>
+    <script src='@routes.Assets.at("javascripts/users/UpdateTicketCtrl.js")' type="text/javascript"></script>
+    <script src='@routes.Assets.at("javascripts/users/UserService.js")' type="text/javascript"></script>
+    <script src='@routes.Assets.at("javascripts/users/UserCtrl.js")' type="text/javascript"></script>
+    <script src='@routes.Assets.at("javascripts/users/GlobalCtrl.js")' type="text/javascript"></script>
+    <script src='@routes.Assets.at("javascripts/users/CreateUserCtrl.js")' type="text/javascript"></script>
+    <script src='@routes.Assets.at("javascripts/users/UserDetailCtrl.js")' type="text/javascript"></script>
+
+</html>

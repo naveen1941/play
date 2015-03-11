@@ -1,0 +1,150 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 32744 bytes for ChunkPool::allocate
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:219), pid=8504, tid=8704
+#
+# JRE version: 7.0_03-b05
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (22.1-b02 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000006092000):  JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=8704, stack(0x0000000006870000,0x0000000006970000)]
+
+Stack: [0x0000000006870000,0x0000000006970000]
+
+Current CompileTask:
+C2: 137481 2406             org.apache.ivy.core.resolve.IvyNode::getDependencies (296 bytes)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x000000000b0ff000 JavaThread "pool-2-thread-2" [_thread_in_Java, id=6920, stack(0x000000000bd90000,0x000000000be90000)]
+  0x0000000008121000 JavaThread "sbt-client-handler-activator-7f1c7b83-0b02-4c63-83a9-591e629cfcb8" [_thread_in_native, id=8692, stack(0x0000000008280000,0x0000000008380000)]
+  0x0000000008017800 JavaThread "sbt-server-command-loop" [_thread_blocked, id=8796, stack(0x00000000089d0000,0x0000000008ad0000)]
+  0x0000000008011800 JavaThread "read-only-sbt-event-loop" [_thread_blocked, id=6644, stack(0x0000000008850000,0x0000000008950000)]
+  0x0000000007fa6800 JavaThread "sbt-server-socket-handler" [_thread_in_native, id=3808, stack(0x00000000086d0000,0x00000000087d0000)]
+  0x0000000007e7d800 JavaThread "Timer-0" daemon [_thread_blocked, id=5636, stack(0x0000000008530000,0x0000000008630000)]
+  0x00000000060a1000 JavaThread "Service Thread" daemon [_thread_blocked, id=7660, stack(0x00000000070a0000,0x00000000071a0000)]
+  0x000000000609f800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=9008, stack(0x0000000006f40000,0x0000000007040000)]
+=>0x0000000006092000 JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=8704, stack(0x0000000006870000,0x0000000006970000)]
+  0x000000000608f000 JavaThread "Attach Listener" daemon [_thread_blocked, id=8564, stack(0x0000000006d00000,0x0000000006e00000)]
+  0x000000000608a000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=8808, stack(0x0000000006bd0000,0x0000000006cd0000)]
+  0x0000000002020800 JavaThread "Finalizer" daemon [_thread_blocked, id=7900, stack(0x00000000065e0000,0x00000000066e0000)]
+  0x000000000201f000 JavaThread "Reference Handler" daemon [_thread_blocked, id=8116, stack(0x0000000006970000,0x0000000006a70000)]
+  0x000000000016b800 JavaThread "main" [_thread_blocked, id=1332, stack(0x00000000022c0000,0x00000000023c0000)]
+
+Other Threads:
+  0x0000000002015000 VMThread [stack: 0x0000000006740000,0x0000000006840000] [id=7856]
+  0x00000000060ac000 WatcherThread [stack: 0x0000000007230000,0x0000000007330000] [id=7568]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ PSYoungGen      total 286080K, used 127284K [0x00000000eaab0000, 0x0000000100000000, 0x0000000100000000)
+  eden space 252544K, 48% used [0x00000000eaab0000,0x00000000f23792f8,0x00000000fa150000)
+  from space 33536K, 23% used [0x00000000fa150000,0x00000000fa928000,0x00000000fc210000)
+  to   space 35072K, 0% used [0x00000000fddc0000,0x00000000fddc0000,0x0000000100000000)
+ PSOldGen        total 174784K, used 82161K [0x00000000c0000000, 0x00000000caab0000, 0x00000000eaab0000)
+  object space 174784K, 47% used [0x00000000c0000000,0x00000000c503c418,0x00000000caab0000)
+ PSPermGen       total 65536K, used 58530K [0x00000000b0000000, 0x00000000b4000000, 0x00000000c0000000)
+  object space 65536K, 89% used [0x00000000b0000000,0x00000000b3928a28,0x00000000b4000000)
+
+Code Cache  [0x00000000023c0000, 0x0000000002920000, 0x00000000053c0000)
+ total_blobs=2616 nmethods=2222 adapters=342 free_code_cache=43730Kb largest_free_block=44697920
+
+Dynamic libraries:
+0x000000013f060000 - 0x000000013f093000 	C:\Program Files\Java\jdk1.7.0_03\bin\java.exe
+0x0000000076d00000 - 0x0000000076ea9000 	C:\Windows\SYSTEM32\ntdll.dll
+0x0000000076ae0000 - 0x0000000076bff000 	C:\Windows\system32\kernel32.dll
+0x000007fefcd00000 - 0x000007fefcd6b000 	C:\Windows\system32\KERNELBASE.dll
+0x000007fefd200000 - 0x000007fefd2db000 	C:\Windows\system32\ADVAPI32.dll
+0x000007fefec50000 - 0x000007fefecef000 	C:\Windows\system32\msvcrt.dll
+0x000007fefe7e0000 - 0x000007fefe7ff000 	C:\Windows\SYSTEM32\sechost.dll
+0x000007fefed00000 - 0x000007fefee2d000 	C:\Windows\system32\RPCRT4.dll
+0x0000000076c00000 - 0x0000000076cfa000 	C:\Windows\system32\USER32.dll
+0x000007fefd9e0000 - 0x000007fefda47000 	C:\Windows\system32\GDI32.dll
+0x000007fefec40000 - 0x000007fefec4e000 	C:\Windows\system32\LPK.dll
+0x000007fefd300000 - 0x000007fefd3c9000 	C:\Windows\system32\USP10.dll
+0x000007fefb4a0000 - 0x000007fefb694000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.17514_none_fa396087175ac9ac\COMCTL32.dll
+0x000007fefd960000 - 0x000007fefd9d1000 	C:\Windows\system32\SHLWAPI.dll
+0x000007fefeb90000 - 0x000007fefebbe000 	C:\Windows\system32\IMM32.DLL
+0x000007fefd550000 - 0x000007fefd659000 	C:\Windows\system32\MSCTF.dll
+0x000007fefcc10000 - 0x000007fefcc4c000 	C:\Windows\system32\nvinitx.dll
+0x0000000062470000 - 0x0000000062541000 	C:\Program Files\Java\jdk1.7.0_03\jre\bin\msvcr100.dll
+0x0000000061530000 - 0x0000000061c0a000 	C:\Program Files\Java\jdk1.7.0_03\jre\bin\server\jvm.dll
+0x000007fef85f0000 - 0x000007fef85f9000 	C:\Windows\system32\WSOCK32.dll
+0x000007fefe800000 - 0x000007fefe84d000 	C:\Windows\system32\WS2_32.dll
+0x000007fefecf0000 - 0x000007fefecf8000 	C:\Windows\system32\NSI.dll
+0x000007fefa4c0000 - 0x000007fefa4fb000 	C:\Windows\system32\WINMM.dll
+0x0000000076ed0000 - 0x0000000076ed7000 	C:\Windows\system32\PSAPI.DLL
+0x000000006a9b0000 - 0x000000006a9bf000 	C:\Program Files\Java\jdk1.7.0_03\jre\bin\verify.dll
+0x0000000062600000 - 0x0000000062628000 	C:\Program Files\Java\jdk1.7.0_03\jre\bin\java.dll
+0x00000000625e0000 - 0x00000000625f5000 	C:\Program Files\Java\jdk1.7.0_03\jre\bin\zip.dll
+0x0000000070590000 - 0x00000000705a9000 	C:\Program Files\Java\jdk1.7.0_03\jre\bin\net.dll
+0x000007fefc460000 - 0x000007fefc4b5000 	C:\Windows\system32\mswsock.dll
+0x000007fefc5b0000 - 0x000007fefc5b7000 	C:\Windows\System32\wship6.dll
+0x0000000062650000 - 0x0000000062661000 	C:\Program Files\Java\jdk1.7.0_03\jre\bin\nio.dll
+0x000007fefc4c0000 - 0x000007fefc4d7000 	C:\Windows\system32\CRYPTSP.dll
+0x000007fefc190000 - 0x000007fefc1d7000 	C:\Windows\system32\rsaenh.dll
+0x000007fefbf50000 - 0x000007fefbf6e000 	C:\Windows\system32\USERENV.dll
+0x000007fefcc50000 - 0x000007fefcc5f000 	C:\Windows\system32\profapi.dll
+0x000007fefcb40000 - 0x000007fefcb4f000 	C:\Windows\system32\CRYPTBASE.dll
+0x000007fefa5d0000 - 0x000007fefa5e5000 	C:\Windows\system32\NLAapi.dll
+0x000007fef31e0000 - 0x000007fef31f5000 	C:\Windows\system32\napinsp.dll
+0x000007fef31c0000 - 0x000007fef31d9000 	C:\Windows\system32\pnrpnsp.dll
+0x000007fefc2b0000 - 0x000007fefc30b000 	C:\Windows\system32\DNSAPI.dll
+0x000007fef31b0000 - 0x000007fef31bb000 	C:\Windows\System32\winrnr.dll
+0x000007fef31a0000 - 0x000007fef31b0000 	C:\Windows\system32\wshbth.dll
+0x000007fefbe20000 - 0x000007fefbe27000 	C:\Windows\System32\wshtcpip.dll
+0x000007fef9570000 - 0x000007fef9597000 	C:\Windows\system32\IPHLPAPI.DLL
+0x000007fef9550000 - 0x000007fef955b000 	C:\Windows\system32\WINNSI.DLL
+0x000007fef3190000 - 0x000007fef3198000 	C:\Windows\system32\rasadhlp.dll
+0x000007fef9260000 - 0x000007fef92b3000 	C:\Windows\System32\fwpuclnt.dll
+0x000007fef9110000 - 0x000007fef911a000 	C:\Users\pravn\AppData\Local\Temp\jansi-64-1-5306607210751640582.11
+0x0000000070a50000 - 0x0000000070a5b000 	C:\Program Files\Java\jdk1.7.0_03\jre\bin\management.dll
+
+VM Arguments:
+jvm_args: -Xms256m -Xmx1024m -XX:PermSize=64m -XX:MaxPermSize=256m 
+java_command: C:\Users\pravn\.sbt\launchers\sbt-launch-d1a077390fb0d09a191d6c77f4e7867e51d67790.jar @load:file:/C:/Users/pravn/AppData/Local/Temp/sbtlaunch8080213680502709959config
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files\Java\jdk1.7.0_03\bin;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\nodejs\;C:\Program Files\Java\jdk1.7.0_03\bin;C:\Users\pravn\AppData\Roaming\npm
+USERNAME=pravn
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 42 Stepping 7, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 , 64 bit Build 7601 Service Pack 1
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 42 stepping 7, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, ht
+
+Memory: 4k page, physical 4099244k(74792k free), swap 5735904k(4196k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (22.1-b02) for windows-amd64 JRE (1.7.0_03-b05), built on Feb  3 2012 20:43:56 by "java_re" with unknown MS VC++:1600
+
+time: Mon Mar 09 23:11:09 2015
+elapsed time: 137 seconds
+

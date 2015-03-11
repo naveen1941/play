@@ -1,0 +1,105 @@
+<div ng-controller="CreateTicketCtrl as ctc">
+    <h1>Create Ticket</h1>
+    
+        
+    <a ng-href="/#/logout" class="btn btn-warning pull-right" id="btn_ticket_create">Logout</a>
+    <legend class="pull-right">Hello <bold>{{ctc.userName}}</bold></legend>
+    <form id="CreateTicketForm" name="CreateTicketForm" class="form-horizontal" role="form"
+          ng-submit="ctc.createTicket()">
+        <div class="form-group">
+            <label id="lbl_customerName" for="customerName" class="col-sm-4 control-label">Customer Name</label>
+
+            <div class="col-sm-4">
+                <input type="text" class="form-control" name="customerName" id="customerName" placeholder=""
+                       ng-model="ctc.ticket.customerName" ng-minlength="5" ng-maxlength="20"  required>
+            </div>
+            <div class="col-sm-4">
+                <span ng-show="CreateTicketForm.customerName.$error.required && CreateTicketForm.customerName.$dirty">required</span>
+                <span ng-show="!CreateTicketForm.customerName.$error.required && (CreateTicketForm.customerName.$error.minlength || CreateTicketForm.customerName.$error.maxlength) && CreateTicketForm.customerName.$dirty">Customet Name must be between 5 and 20 characters.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label id="lbl_email" for="email" class="col-sm-4 control-label">Email</label>
+
+            <div class="col-sm-4">
+                <input type="email" class="form-control" name="email" id="email" placeholder=""
+                       ng-model="ctc.ticket.email" required>
+            </div>
+             <div class="col-sm-4">
+                 <span ng-show="CreateTicketForm.email.$error.required && CreateTicketForm.email.$dirty">required</span>
+                 <span ng-show="!CreateTicketForm.email.$error.required && CreateTicketForm.email.$error.email && CreateTicketForm.email.$dirty">invalid email</span>
+             </div>
+        </div>
+
+        <div class="form-group">
+            <label id="lbl_title" for="title" class="col-sm-4 control-label"
+                   >Title</label>
+
+            <div class="col-sm-4">
+                <input type="text" class="form-control" name="title" id="title"
+                       ng-model="ctc.ticket.title" ng-minlength="5" ng-maxlength="20"  required>
+            </div>
+            <div class="col-sm-4">
+                <span ng-show="CreateTicketForm.title.$error.required && CreateTicketForm.title.$dirty">required</span>
+                <span ng-show="!CreateTicketForm.title.$error.required && (CreateTicketForm.title.$error.minlength || CreateTicketForm.title.$error.maxlength) && CreateTicketForm.title.$dirty">Title must be between 5 and 20 characters.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label id="lbl_description" for="description" class="col-sm-4 control-label"
+                    >Description</label>
+
+            <div class="col-sm-4">
+                <input type="text" class="form-control" name="description" id="description"
+                       ng-model="ctc.ticket.description" ng-minlength="5" ng-maxlength="20"  required>
+            </div>
+            <div class="col-sm-4">
+                <span ng-show="CreateTicketForm.description.$error.required && CreateTicketForm.description.$dirty">required</span>
+                <span ng-show="!CreateTicketForm.description.$error.required && (CreateTicketForm.description.$error.minlength || CreateTicketForm.description.$error.maxlength) && CreateTicketForm.description.$dirty">Description must be between 5 and 20 characters.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label id="lbl_assignedTo" for="assignedTo" class="col-sm-4 control-label"
+                    >Assigned To</label>
+
+            <div class="col-sm-4">
+                <div class="col-sm-6">
+                    <select name="select_assignedTo" id name="select_assignedTo" ng-model="ctc.ticket.assignedTo" class="form-control" required>
+                        <option ng-repeat="user in ctc.users" value="{{user.userId}}">{{user.userName}}, {{user.email}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <span ng-show="CreateTicketForm.select_assignedTo.$error.required">Assign this ticket</span>           
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label id="lbl_status" for="status" class="col-sm-4 control-label"
+                    >Status</label>
+            <div class="col-sm-4">
+                <div class="col-sm-6">
+                    <select name="select_status" id name="select_status" ng-model="ctc.ticket.status" class="form-control" required>
+                        <option ng-repeat="option in ctc.status" value="{{option.id}}">{{option.name}}</option>
+                    </select>
+                </div>
+            </div>
+             <div class="col-sm-4">
+                <span ng-show="CreateTicketForm.select_status.$error.required">Select Status</span>           
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8 text-right">
+                <a ng-href="/#/" id="btn_cancel" class="btn btn-warning">Cancel</a>
+                <button type="submit" class="btn btn-success" id="btn_create" ng-disabled="!CreateTicketForm.$valid">Create Ticket</button>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+
